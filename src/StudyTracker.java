@@ -17,12 +17,50 @@ public class StudyTracker {
     }
 
     public void showAllSessions() {
-        if(SessionList.size() <= 0) {
+        if (SessionList.size() <= 0) {
             System.out.println("Empty");
         } else {
             for (int i = 0; i < SessionList.size(); i++) {
                 System.out.println(SessionList.get(i));
             }
+            System.out.println("\n" + "Minutes studied: " + totalMinutes() + " " + "minutes");
         }
     }
+
+    public double totalMinutes() {
+        double total = 0;
+        for (StudySession session : SessionList) {
+            total += session.getMinutes();
+        }
+        return total;
+    }
+
+//    public double convertMinutesToHours () {
+//        double timeStudied = totalMinutes();
+//        if (timeStudied == 60) {
+//            System.out.println("1 hour");
+//        } else if (totalMinutes() > 60) {
+//            double hours = timeStudied / 60;
+//            double remainder = timeStudied - (1*60);
+//        }
+//    }
 }
+
+//    public double convertMinutesToHours () {
+//        double timeStudied = 0;
+//        if (totalMinutes() == 60) {
+//            System.out.println("1 hour");
+//        } else if (totalMinutes() > 60) {
+//            double hours = totalMinutes() / 60;
+//            double remainder = hours % 60;
+//            timeStudied = hours + remainder;
+//        }
+//        return timeStudied;
+//    }
+//}
+//    @Override
+//    public String toString() {
+//        return SessionList.toString() + "\n" + "Total " + totalMinutes();
+//    }
+//}
+
