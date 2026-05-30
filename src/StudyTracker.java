@@ -23,7 +23,9 @@ public class StudyTracker {
             for (int i = 0; i < SessionList.size(); i++) {
                 System.out.println(SessionList.get(i));
             }
-            System.out.println("\n" + "Minutes studied: " + totalMinutes() + " " + "minutes");
+//            System.out.println("\n" + "Minutes studied: " + totalMinutes() + " " + "minutes");
+            System.out.println("Total time studied:");
+            convertMinutesToHours();
         }
     }
 
@@ -35,6 +37,19 @@ public class StudyTracker {
         return total;
     }
 
+    public void convertMinutesToHours() {
+        double time = totalMinutes();
+        if (time == 60) {
+            System.out.println("1 hour");
+        } else if (time > 60) {
+            int hours = (int) time / 60;
+            double remainder = time % 60;
+            System.out.println(hours + " " + "hours" + " " + "and" + " " + remainder + " " + "minutes");
+        }
+
+    }
+}
+
 //    public double convertMinutesToHours () {
 //        double timeStudied = totalMinutes();
 //        if (timeStudied == 60) {
@@ -44,7 +59,6 @@ public class StudyTracker {
 //            double remainder = timeStudied - (1*60);
 //        }
 //    }
-}
 
 //    public double convertMinutesToHours () {
 //        double timeStudied = 0;
