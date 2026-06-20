@@ -25,7 +25,12 @@ public class StudyTracker {
             }
 //            System.out.println("\n" + "Minutes studied: " + totalMinutes() + " " + "minutes");
             System.out.println("Total time studied:");
-            convertMinutesToHours();
+            if (totalMinutes() < 60) {
+                totalMinutes();
+            } else {
+                convertMinutesToHours();
+                System.out.println("\n");
+            }
         }
     }
 
@@ -46,6 +51,11 @@ public class StudyTracker {
             double remainder = time % 60;
             System.out.println(hours + " " + "hours" + " " + "and" + " " + remainder + " " + "minutes");
         }
+
+    }
+
+    public int lengthOfSessionList() {
+        return SessionList.size();
 
     }
 }

@@ -8,52 +8,65 @@ public class Main {
         StudyTracker tracker = new StudyTracker();
         Scanner inputScanner = new Scanner(System.in);
 
-        System.out.println("Select from below: \n A: Add new session \n Q: Exit");
-        String choice = inputScanner.nextLine();
-        if (choice.equals("Q") || choice.equals("q")) {
-            System.out.println("Program Terminated");
-            inputScanner.close();
-        } else if (choice.equals("A") || choice.equals("a")) {
 
-            System.out.println("Name of the module? : ");
-            String moduleName = inputScanner.nextLine();
-            if (moduleName.isEmpty()) {
-                System.out.println("Cannot have an empty module name"); //add the module name
+
+
+
+        while (true) {
+            System.out.println("Select from below: \n A: Add new session \n Q: Exit \n S: Show all sessions");
+            String choice = inputScanner.nextLine();
+
+            if (choice.equals("S") || choice.equals("s")) {
+                tracker.showAllSessions();
                 return;
-            } else {
-                System.out.println("Module name added successfully");
             }
 
-            System.out.println("Number of minutes studied? : ");
-            double minutesStudied = inputScanner.nextDouble();
-            if (minutesStudied < 0) {                                    //add the minutes studied
-                System.out.println("Invalid minutes studied!");
-                return;
+            if (choice.equals("Q") || choice.equals("q")) {
+                System.out.println("Program Terminated");
+                inputScanner.close();
+                break;
+
+            } else if (choice.equals("A") || choice.equals("a")) {
+
+                System.out.println("Name of the module? : ");
+                String moduleName = inputScanner.nextLine();
+                if (moduleName.isEmpty()) {
+                    System.out.println("Cannot have an empty module name"); //add the module name
+                    return;
+                } else {
+                    System.out.println("Module name added successfully");
+                }
+
+                System.out.println("Number of minutes studied? : ");
+                double minutesStudied = inputScanner.nextDouble();
+                if (minutesStudied < 0) {                                    //add the minutes studied
+                    System.out.println("Invalid minutes studied!");
+                    return;
+                } else {
+                    System.out.println("Minutes studied added successfully!");
+                }
+                inputScanner.nextLine();
+
+                System.out.println("What topic? : ");
+                String topic = inputScanner.nextLine();
+                if (topic.isEmpty()) {
+                    System.out.println("Cannot have an empty topic!");       //add the topic
+                    return;
+                } else {
+                    System.out.println("Topic added successfully!");
+                }
+
+                LocalDate date = LocalDate.now();
+
+                StudySession session;
+                session = new StudySession(moduleName, minutesStudied, topic, date); //build new inputted object dynamically
+                tracker.addSession(session);
+                tracker.showAllSessions();
+
             } else {
-                System.out.println("Minutes studied added successfully!");
+                System.out.println("Invalid choice\nProgram Terminated");
+                inputScanner.close();
             }
-            inputScanner.nextLine();
-
-            System.out.println("What topic? : ");
-            String topic = inputScanner.nextLine();
-            if (topic.isEmpty()) {
-                System.out.println("Cannot have an empty topic!");       //add the topic
-                return;
-            } else {
-                System.out.println("Topic added successfully!");
-            }
-
-            LocalDate date = LocalDate.now();
-
-            StudySession session;
-            session = new StudySession(moduleName, minutesStudied, topic, date); //build new inputted object dynamically
-            tracker.addSession(session);
-            tracker.showAllSessions();
-
-            inputScanner.close();
-        } else {
-            System.out.println("Invalid choice\nProgram Terminated");
-            inputScanner.close();
         }
     }
 }
