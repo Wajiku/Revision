@@ -24,9 +24,9 @@ public class StudyTracker {
                 System.out.println(SessionList.get(i));
             }
 //            System.out.println("\n" + "Minutes studied: " + totalMinutes() + " " + "minutes");
-            System.out.println("Total time studied:");
+            System.out.println("Total time studied: ");
             if (totalMinutes() < 60) {
-                totalMinutes();
+                System.out.println("Total time studied: " + totalMinutes());
             } else {
                 convertMinutesToHours();
                 System.out.println("\n");

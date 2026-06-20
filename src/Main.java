@@ -18,10 +18,8 @@ public class Main {
 
             if (choice.equals("S") || choice.equals("s")) {
                 tracker.showAllSessions();
-                return;
-            }
 
-            if (choice.equals("Q") || choice.equals("q")) {
+            } else if (choice.equals("Q") || choice.equals("q")) {
                 System.out.println("Program Terminated");
                 inputScanner.close();
                 break;
@@ -65,7 +63,6 @@ public class Main {
 
             } else {
                 System.out.println("Invalid choice\nProgram Terminated");
-                inputScanner.close();
             }
         }
     }
