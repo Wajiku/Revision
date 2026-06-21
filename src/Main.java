@@ -8,10 +8,6 @@ public class Main {
         StudyTracker tracker = new StudyTracker();
         Scanner inputScanner = new Scanner(System.in);
 
-
-
-
-
         while (true) {
             System.out.println("Select from below: \n A: Add new session \n Q: Exit \n S: Show all sessions");
             String choice = inputScanner.nextLine();
@@ -27,31 +23,44 @@ public class Main {
             } else if (choice.equals("A") || choice.equals("a")) {
 
                 System.out.println("Name of the module? : ");
-                String moduleName = inputScanner.nextLine();
-                if (moduleName.isEmpty()) {
-                    System.out.println("Cannot have an empty module name"); //add the module name
-                    return;
-                } else {
-                    System.out.println("Module name added successfully");
+                String moduleName;
+                while (true) {
+                    String mName = inputScanner.nextLine();
+                    if(!mName.isEmpty()) {
+                        System.out.println("Module name added successfully");           //add the module name
+                        moduleName = mName;
+                        break;
+                    } else {
+                        System.out.println("Cannot have empty module name!");
+                    }
                 }
 
                 System.out.println("Number of minutes studied? : ");
-                double minutesStudied = inputScanner.nextDouble();
-                if (minutesStudied < 0) {                                    //add the minutes studied
-                    System.out.println("Invalid minutes studied!");
-                    return;
-                } else {
-                    System.out.println("Minutes studied added successfully!");
+                double minutesStudied;
+                while(true) {
+                    double mStudied = inputScanner.nextDouble();
+                    if(mStudied < 0) {                                       //add minutes studied
+                        System.out.println("Invalid minutes studied");
+                    } else {
+                        System.out.println("Minutes added successfully");
+                        minutesStudied = mStudied;
+                        break;
+                    }
                 }
+
                 inputScanner.nextLine();
 
                 System.out.println("What topic? : ");
-                String topic = inputScanner.nextLine();
-                if (topic.isEmpty()) {
-                    System.out.println("Cannot have an empty topic!");       //add the topic
-                    return;
-                } else {
-                    System.out.println("Topic added successfully!");
+                String topic;
+                while(true) {
+                    String tpic = inputScanner.nextLine();
+                    if(!tpic.isEmpty()) {
+                        System.out.println("Topic added successfully");
+                        topic = tpic;                                          //add new topic
+                        break;
+                    } else {
+                        System.out.println("Cannot have empty topic!");
+                    }
                 }
 
                 LocalDate date = LocalDate.now();
@@ -67,27 +76,3 @@ public class Main {
         }
     }
 }
-
-//        LocalDate date = LocalDate.now();
-//
-//        StudySession session = new StudySession("OS", 40, "Week 5", date);
-//        StudySession session2 = new StudySession("Mobile Application Development", 180, "Week 5", date);
-//        StudySession session3 = new StudySession("Formal Methods", 65, "Week 5", date);
-//        StudySession session4 = new StudySession("Team Projects", 45, "Week 5", date);
-//        StudySession session5 = new StudySession("AI Methods", 200, "Week 5", date);
-//        StudySession session6 = new StudySession("Professional Issues In Computing", 90, "Week 5", date);
-//
-//        StudyTracker tracker = new StudyTracker();
-//
-//        tracker.addSession(session);
-//        tracker.addSession(session2);
-//        tracker.addSession(session3);
-//        tracker.addSession(session4);
-//        tracker.addSession(session5);
-//        tracker.addSession(session6);
-//
-//        tracker.deleteSession(session);
-//        tracker.showAllSessions();
-//
-//    }
-//}
