@@ -9,7 +9,7 @@ public class Main {
         Scanner inputScanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Select from below: \n A: Add new session \n Q: Exit \n S: Show all sessions");
+            System.out.println("Select from below: \n A: Add new session \n Q: Exit \n S: Show all sessions \n D: Delete a session");
             String choice = inputScanner.nextLine();
 
             if (choice.equals("S") || choice.equals("s")) {
@@ -69,6 +69,20 @@ public class Main {
                 session = new StudySession(moduleName, minutesStudied, topic, date); //build new inputted object dynamically
                 tracker.addSession(session);
                 tracker.showAllSessions();
+
+            } else if (choice.equals("D") || choice.equals("d")) {
+                tracker.showAllSessions();
+                System.out.println("What session would you like to delete?");
+//                while (true) {
+//                    String deleteSession = inputScanner.nextLine();
+////                    if(deleteSession == session.getModuleName()) {
+////                        tracker.deleteSession(session);
+//                        System.out.println("Session deleted successfully");
+//                        break;
+//                    } else {
+//                        System.out.println("Cannot find matching session!");
+//                    }
+//                }
 
             } else {
                 System.out.println("Invalid choice\nProgram Terminated");
