@@ -12,16 +12,19 @@ public class StudyTracker {
         SessionList.add(session);
     }
 
-    public void deleteSession(StudySession session) {
-        SessionList.remove(session);
-    }
+//    public void deleteSession(StudySession session) {
+//        SessionList.remove(session);
+//    }
 
     public void showAllSessions() {
         if (SessionList.size() <= 0) {
             System.out.println("Empty");
         } else {
             for (int i = 0; i < SessionList.size(); i++) {
+                System.out.print(i + ".)" + "\n");
                 System.out.println(SessionList.get(i));
+//                System.out.println(i);
+//                System.out.println(i + "." + SessionList.get(i));
             }
 //            System.out.println("\n" + "Minutes studied: " + totalMinutes() + " " + "minutes");
             System.out.println("Total time studied: ");
@@ -58,7 +61,17 @@ public class StudyTracker {
         return SessionList.size();
 
     }
-}
+
+    public void deletebyIndex(int index) {
+        if (lengthOfSessionList()<= 0) {
+            System.out.println("Empty");                             //method to find the index of selected session and delete it
+        } else if (index >= 0 && index < lengthOfSessionList()){
+                SessionList.remove(index);
+                System.out.println("Session deleted!");
+            } else {
+                System.out.println("Cannot find matching session!");
+            }
+    }
 
 //    public double convertMinutesToHours () {
 //        double timeStudied = totalMinutes();
@@ -88,3 +101,6 @@ public class StudyTracker {
 //    }
 //}
 
+
+
+}

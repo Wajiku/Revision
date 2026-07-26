@@ -71,8 +71,24 @@ public class Main {
                 tracker.showAllSessions();
 
             } else if (choice.equals("D") || choice.equals("d")) {
-                tracker.showAllSessions();
-                System.out.println("What session would you like to delete?");
+                if (tracker.lengthOfSessionList() == 0) {
+                    System.out.println("Session list is empty");
+                } else {
+                    tracker.showAllSessions();
+                    System.out.println("What session would you like to delete?");
+                    while (true) {
+                        int delete_index = inputScanner.nextInt();
+                        inputScanner.nextLine(); //need this as nextInt reads a number and leaves an empty key behind, this helps fix inputting issues
+                        int listSizeBeforeDelete = tracker.lengthOfSessionList(); //to track, like snapshotting
+                        tracker.deletebyIndex(delete_index);
+
+                        if (tracker.lengthOfSessionList() < listSizeBeforeDelete) { //to check if it has been deleted or not
+                            break;
+                        }
+
+                        System.out.println("Pick a valid session number:");
+                    }
+                }
 //                while (true) {
 //                    String deleteSession = inputScanner.nextLine();
 ////                    if(deleteSession == session.getModuleName()) {
