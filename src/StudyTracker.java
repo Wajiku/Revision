@@ -62,6 +62,17 @@ public class StudyTracker {
 
     }
 
+    //this checks whether the parameter is a number or not (may use later)
+    public boolean isValid(String s) {
+        for(int i=0; i<s.length(); i++) {
+            if(!Character.isDigit(s.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     public void deletebyIndex(int index) {
         if (lengthOfSessionList()<= 0) {
             System.out.println("Empty");                             //method to find the index of selected session and delete it

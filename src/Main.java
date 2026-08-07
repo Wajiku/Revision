@@ -75,30 +75,32 @@ public class Main {
                     System.out.println("Session list is empty");
                 } else {
                     tracker.showAllSessions();
-                    System.out.println("What session would you like to delete?");
-                    while (true) {
-                        int delete_index = inputScanner.nextInt();
-                        inputScanner.nextLine(); //need this as nextInt reads a number and leaves an empty key behind, this helps fix inputting issues
-                        int listSizeBeforeDelete = tracker.lengthOfSessionList(); //to track, like snapshotting
-                        tracker.deletebyIndex(delete_index);
 
-                        if (tracker.lengthOfSessionList() < listSizeBeforeDelete) { //to check if it has been deleted or not
-                            break;
+
+                    String delete_index = "";  //initialise
+                    int index_to_delete = 0;
+
+                    while (true) {
+                        System.out.println("What session would you like to delete?");
+                        delete_index = inputScanner.nextLine();
+
+                        if (!tracker.isValid(delete_index)) {          //use helper method in tracker
+                            System.out.println("Not a valid number!");
+                        } else {
+
+                            index_to_delete = Integer.parseInt(delete_index); //wrap the string into an integer by parsing it
+                            int listSizeBeforeDelete = tracker.lengthOfSessionList(); //to track, like snapshotting
+                            tracker.deletebyIndex(index_to_delete); //deletes
+                            if (tracker.lengthOfSessionList() < listSizeBeforeDelete) { //to check if it has been deleted or not
+                                break;
+                            }
+                            System.out.println("Pick a valid session number:");
+
                         }
 
-                        System.out.println("Pick a valid session number:");
                     }
+
                 }
-//                while (true) {
-//                    String deleteSession = inputScanner.nextLine();
-////                    if(deleteSession == session.getModuleName()) {
-////                        tracker.deleteSession(session);
-//                        System.out.println("Session deleted successfully");
-//                        break;
-//                    } else {
-//                        System.out.println("Cannot find matching session!");
-//                    }
-//                }
 
             } else {
                 System.out.println("Invalid choice\nProgram Terminated");
