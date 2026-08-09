@@ -34,21 +34,44 @@ public class Main {
                         System.out.println("Cannot have empty module name!");
                     }
                 }
+//                System.out.println("Number of minutes studied? : ");
+//                double minutesStudied;
+//                while(true) {
+//                    double mStudied = inputScanner.nextDouble();
+//                    if(mStudied < 0) {                                       //add minutes studied
+//                        System.out.println("Invalid minutes studied");
+//                    } else {
+//                        System.out.println("Minutes added successfully");
+//                        minutesStudied = mStudied;
+//                        break;
+//                    }
+//                }
 
-                System.out.println("Number of minutes studied? : ");
-                double minutesStudied;
+                String minutes;
+                double studyTime;
+
                 while(true) {
-                    double mStudied = inputScanner.nextDouble();
-                    if(mStudied < 0) {                                       //add minutes studied
-                        System.out.println("Invalid minutes studied");
+                    System.out.println("Number of minutes studied? : ");
+                    minutes = inputScanner.nextLine();
+
+                    if (!tracker.isDouble(minutes)) {
+                        System.out.println("Invalid minutes!");
                     } else {
                         System.out.println("Minutes added successfully");
-                        minutesStudied = mStudied;
+                        studyTime = Double.parseDouble(minutes);
                         break;
                     }
                 }
 
-                inputScanner.nextLine();
+//                    double mStudied = inputScanner.nextDouble();
+//                    if(mStudied < 0) {                                       //add minutes studied
+//                        System.out.println("Invalid minutes studied");
+//                    } else {
+//                        System.out.println("Minutes added successfully");
+//                        minutesStudied = mStudied;
+//                        break;
+//                    }
+//                }
 
                 System.out.println("What topic? : ");
                 String topic;
@@ -66,7 +89,7 @@ public class Main {
                 LocalDate date = LocalDate.now();
 
                 StudySession session;
-                session = new StudySession(moduleName, minutesStudied, topic, date); //build new inputted object dynamically
+                session = new StudySession(moduleName, studyTime, topic, date); //build new inputted object dynamically
                 tracker.addSession(session);
                 tracker.showAllSessions();
 

@@ -72,6 +72,15 @@ public class StudyTracker {
         return true;
     }
 
+    public boolean isDouble(String str) {
+        try{
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 
     public void deletebyIndex(int index) {
         if (lengthOfSessionList()<= 0) {
